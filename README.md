@@ -269,6 +269,8 @@ date_of_birth DATE NOT NULL,
 
 > > > SELECT \* FROM person WHERE email LIKE '**\_\_\_\_**@%';
 
+> > > SELECT email, COUNT(\*) FROM person GROUP BY email HAVING COUNT(\*) > 1;
+
 ## Limiting the number of records you get back
 
 > > > SELECT \* FROM person LIMIT 10;
@@ -341,5 +343,29 @@ date_of_birth DATE NOT NULL,
 
 ## Dates In Postgresl
 
-Getting the actual date and time: SELECT NOW()
-Getting the date: SELECT NOW()::DATE;
+1. Getting the actual date and time: SELECT NOW()
+2. Getting the date: SELECT NOW()::DATE;
+3. Getting the time: SELECT NOW()::TIME;
+
+## Adding and substracting dates
+
+1. SELECT NOW() - INTERVAL '10 YEARS';
+2. SELECT NOW() - INTERVAL '10 MONTHS';
+3. SELECT NOW() - INTERVAL '10 DAYS';
+
+## Calculating Peoples Age
+
+> > > SELECT first_name, last_name, gender, country, date_of_birth, AGE(NOW(), date_of_birth) AS age FROM person;
+
+## PRIMARY KEYS
+
+Primary Keys are unique columns in a table that are used to identify a person to thing.
+Primary Keys are unique to each item, therefore two rows cant have the same primary key.
+
+## Droping Constraints from a table
+
+> > > ALTER TABLE person DROP CONSTRAINT person_pkey;
+
+## Adding a primary key
+
+> > > ALTER TABLE person ADD PRIMARY KEY (id)
