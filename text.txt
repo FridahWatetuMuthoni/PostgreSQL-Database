@@ -1,0 +1,2 @@
+C:/Users/frida/desktop/programming/PostgreSQL/person.sql
+C:/Users/frida/desktop/programming/PostgreSQL/car.sql
