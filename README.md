@@ -210,6 +210,7 @@ date_of_birth DATE NOT NULL,
 ## HOW TO INSERT DATA OR ROWS IN A TABLE
 
 > > > INSERT INTO person(first_name, last_name, gender, date_of_birth) VALUES ("Anna", "Smith", DATE "1988-01-09->(year-month-day));
+
 > > > INSERT INTO employees
 > > > VALUES(1, "Eugene", "Krabs", 25.50, "2023-01-02");
 
@@ -229,38 +230,59 @@ date_of_birth DATE NOT NULL,
 ## SELECTING DATA FROM A TABLE
 
 > > > SELECT \* FROM employees;
+
 > > > SECECT first_name, last_name FROM employees;
+
 > > > SELECT \* FROM employees WHERE employee_id = 1;
+
 > > > SELECT \* FROM employees WHERE first_name = "Spongebob" ;
+
 > > > SELECT \* FROM empoyees WHERE hourly_pay > 12.50;
+
 > > > SELECT \* FROM employees WHERE hourly_pay != 12.50;
+
 > > > SELECT \* FROM person WHERE country = 'Kenya';
+
 > > > SELECT \* FROM persom WHERE gender = 'Female';
+
 > > > SELECT \* FROM person WHERE gender = "Male" AND country = "Poland";
+
 > > > SELECT \* FORM person WHERE gender = 'Female' AND (country = 'Poland OR country = 'China');
+
 > > > SELECT \* FORM person WHERE gender = 'Female' AND (country = 'Poland OR country = 'China') AND first_name = 'jane';
+
 > > > SELECT \* FROM person WHERE country IN ('China', 'France', 'Brazil','Mexico');
+
 > > > SELECT \* FROM person WHERE country IN ('China', 'France', 'Brazil','Mexico') ORDER BY country;
+
 > > > SELECT \* FROM person WHERE date_of_birth BETWEEN '2000-01-01' AND '2010-01-01';
 
 ## Selecting all the emails that end with .com
 
 > > > SELECT \* FROM person WHERE email LIKE '%.com';
+
 > > > SELECT \* FROM person WHERE email LIKE '%@bloomberg.com';
+
 > > > SELECT \* FROM person WHERE email LIKE '%@gmail.com';
+
 > > > SELECT \* FROM person WHERE email LIKE '%@google.%';
+
 > > > SELECT \* FROM person WHERE email LIKE '**\_\_\_\_**@%';
 
 ## Limiting the number of records you get back
 
 > > > SELECT \* FROM person LIMIT 10;
+
 > > > SELECT \* FROM person OFFSET 5 LIMIT 5; starts from 5 to 10
+
 > > > SELECT \* FROM person OFFSET 5 FETCH FIRST 15 ROW ONLY;
 
 ## Ordering data in asending or desending order
 
 > > > SELECT \* FROM person ORDER BY email;
+
 > > > SELECT \* first_name FROM person ORDER BY first_name;
+
 > > > SELECT \* first_name FROM person ORDER BY first_name DESC;
 
 ## getting the only the unique data from a column in a table
@@ -270,11 +292,13 @@ date_of_birth DATE NOT NULL,
 ## Grouping data by a column
 
 > > > SELECT country, COUNT(\*) FROM person GROUP BY country;
+
 > > > SELECT country, COUNT(\*) FROM person GROUP BY country ORDER BY country;
 
 ## Finding the group that has more than five people
 
 > > > SELECT country, COUNT(\*) FROM person GROUP BY country HAVING COUNT(\*) > 5;
+
 > > > SELECT country, COUNT(\*) FROM person GROUP BY country HAVING COUNT(\*) > 5 ORDER BY country;
 
 ## Finding the maximum number
@@ -300,14 +324,22 @@ date_of_birth DATE NOT NULL,
 ## Performing Addition with our data set
 
 > > > SELECT SUM(price) FROM car;
+
 > > > SELECT make, model, SUM(price) FROM car GROUP BY make, model;
 
 ## Promotional Price
 
 > > > SELECT id, make , model, price, price \* 0.1 FROM car;
+
 > > > SELECT id, make , model, price, ROUND(price \* 0.1, 2) FROM car;
+
 > > > SELECT id, make , model, price AS original_price, ROUND(price \* 0.1, 2) AS discount, (price - ROUND(price \* 0.1,2)) AS price_after_discount FROM car;
 
 ## Selecting all the emails from the databse and if someone doesn have one we say email not provided
 
 > > > SELECT COALESCE(email, "Email Not Provided") FROM person;
+
+## Dates In Postgresl
+
+Getting the actual date and time: SELECT NOW()
+Getting the date: SELECT NOW()::DATE;
