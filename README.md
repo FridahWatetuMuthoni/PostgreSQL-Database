@@ -369,3 +369,23 @@ Primary Keys are unique to each item, therefore two rows cant have the same prim
 ## Adding a primary key
 
 > > > ALTER TABLE person ADD PRIMARY KEY (id)
+
+## Unique Constraints
+
+> > > ALTER TABLE person ADD CONSTRAINT unique_email_address UNIQUE (email);
+
+> > > ALTER TABLE person ADD UNIQUE (email);
+
+## Check Constraints
+
+> > > ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK (gender = 'Female' OR gender = 'Male');
+
+## DELETING RECORDS FROM A TABLE
+
+> > > DELETE FROM person WHERE id = 2;
+
+## UPDATING RECORDS IN A TABLE
+
+> > > UPDATE person SET email ="ammer@gmail.com" WHERE id = 10;
+
+3:16:41
