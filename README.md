@@ -388,4 +388,34 @@ Primary Keys are unique to each item, therefore two rows cant have the same prim
 
 > > > UPDATE person SET email ="ammer@gmail.com" WHERE id = 10;
 
-3:16:41
+## FOREIGN KEYS
+
+A foreign key is a column that references a primary key in another table.
+Foreign keys ensure data consistency and referential integrity by preventing records with invalid references from being inserted.
+Foreign keys represents a one to one relationship...eg.There are two tables, a persons tables and a car table...If the person and the car table have a one to one relationship, it means that a person can only have one car.Therefore a car can only be referenced to one person.
+
+## ADDING RELATIONSHIPS BETWEEN TABLES
+
+create table person (
+person_uid UUID NOT NULL PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
+gender VARCHAR(7) NOT NULL,
+email VARCHAR(100),
+date_of_birth DATE NOT NULL,
+country_of_birth VARCHAR(50) NOT NULL,
+car_uid UUID REFERENCES car(car_uid),
+UNIQUE(car_id),
+UNIQUE(email)
+);
+
+create table car (
+car_uid UUID NOT NULL PRIMARY KEY,
+make VARCHAR(100) NOT NULL,
+model VARCHAR(100) NOT NULL,
+price NUMERIC(19, 2) NOT NULL CHECK (price > 0)
+);
+
+## Asigning a person a car
+
+> > > UPDATE person SET car_id = 1 WHERE id = 2;
